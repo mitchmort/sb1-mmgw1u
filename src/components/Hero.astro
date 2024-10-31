@@ -1,0 +1,36 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="relative pt-20 md:pt-32 pb-12 md:pb-20 bg-gradient-to-b from-primary-50 to-white overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-0 left-1/4 w-1/2 h-1/2 bg-primary-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-primary-500/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-800 mb-4" data-aos="fade-up">
+        Quality Roofing
+        <span class="block mt-2 text-primary-600">Without The Markup</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 mb-8" data-aos="fade-up" data-aos-delay="100">
+        Save 30-50% on your roofing project with our independent inspection and competitive bidding process.
+      </p>
+      <div data-aos="fade-up" data-aos-delay="200">
+        <Button href="#contact" variant="primary" class="text-lg">
+          Schedule $99 Inspection
+        </Button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave transition -->
+  <div class="absolute bottom-0 left-0 right-0 h-16 md:h-24">
+    <svg class="w-full h-full" viewBox="0 0 1440 54" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 22L48 27.3C96 32.7 192 43.3 288 43.3C384 43.3 480 32.7 576 27.3C672 22 768 22 864 27.3C960 32.7 1056 43.3 1152 43.3C1248 43.3 1344 32.7 1392 27.3L1440 22V54H1392C1344 54 1248 54 1152 54C1056 54 960 54 864 54C768 54 672 54 576 54C480 54 384 54 288 54C192 54 96 54 48 54H0V22Z" fill="rgb(248 250 252)" />
+      <path d="M0 27L48 32.3C96 37.7 192 48.3 288 48.3C384 48.3 480 37.7 576 32.3C672 27 768 27 864 32.3C960 37.7 1056 48.3 1152 48.3C1248 48.3 1344 37.7 1392 32.3L1440 27V54H1392C1344 54 1248 54 1152 54C1056 54 960 54 864 54C768 54 672 54 576 54C480 54 384 54 288 54C192 54 96 54 48 54H0V27Z" fill="rgb(248 250 252)" fill-opacity="0.3" />
+    </svg>
+  </div>
+</section>

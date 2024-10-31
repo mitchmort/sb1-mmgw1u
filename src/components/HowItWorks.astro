@@ -1,0 +1,103 @@
+---
+interface Step {
+  number: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const steps: Step[] = [
+  {
+    number: 1,
+    title: "Independent Inspection",
+    description: "Our certified inspectors assess your roof's true condition and needs",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>`
+  },
+  {
+    number: 2,
+    title: "Competitive Bidding",
+    description: "We gather and compare bids from trusted roofing companies",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>`
+  },
+  {
+    number: 3,
+    title: "Price Negotiation",
+    description: "We negotiate the best price using our volume and expertise",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>`
+  },
+  {
+    number: 4,
+    title: "Project Management",
+    description: "We oversee the entire project to ensure quality and satisfaction",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+    </svg>`
+  }
+];
+---
+
+<section id="how-it-works" class="py-12 md:py-20 bg-gradient-to-br from-white via-primary-50/30 to-white relative">
+  <div class="relative max-w-7xl mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto">
+      <span class="inline-block px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-4" data-aos="fade-up">
+        Our Process
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-4" data-aos="fade-up">Our 4-Step Process</h2>
+      <p class="text-base md:text-lg text-slate-600 mb-12 md:mb-16 px-4" data-aos="fade-up" data-aos-delay="100">
+        From inspection to completion, we handle everything to ensure you get quality roofing at the best price.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      {steps.map((step, index) => (
+        <div 
+          class="relative bg-white rounded-xl shadow-xl p-6 md:p-8 border-2 border-slate-100 hover:border-primary-200 hover:shadow-2xl transition-all duration-300 group"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-primary-600 group-hover:scale-110 transition-transform mb-6">
+            <Fragment set:html={step.icon} />
+          </div>
+          <div class="absolute top-6 right-6 text-4xl font-bold text-primary-100 group-hover:text-primary-200 transition-colors">
+            {step.number}
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-3">{step.title}</h3>
+          <p class="text-slate-600">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Video Section -->
+  <div class="max-w-5xl mx-auto mt-12 md:mt-20 px-4" data-aos="fade-up">
+    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl mb-6 md:mb-8 border-4 border-white">
+      <div class="relative pb-[56.25%] h-0">
+        <iframe
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="How Roof Scout Works"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+    <div class="text-center">
+      <a 
+        href="#contact" 
+        class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200 bg-primary-600 text-white hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-500/25 w-full md:w-auto text-base md:text-lg group"
+      >
+        Schedule $99 Inspection
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

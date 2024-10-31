@@ -1,0 +1,122 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Roof Scout connects you to quality roofing without the markup. Save 30-50% on your roofing project with our independent inspection and bidding service." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Roof Scout - Fair Roofing Prices</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Maps -->
+    <script src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA3fMupjtXFQLoILdcAgjfuH1t1pwM9WSY&libraries=places`} defer></script>
+
+    <!-- Alpine.js -->
+    <script>
+      import Alpine from 'alpinejs';
+      window.Alpine = Alpine;
+
+      // Define the contact form functionality
+      document.addEventListener('alpine:init', () => {
+        Alpine.data('contactForm', () => ({
+          currentStep: 1,
+          totalSteps: 5,
+          formData: {
+            name: '',
+            email: '',
+            address: '',
+            propertyType: '',
+            damageType: '',
+            timeline: '',
+            phone: ''
+          },
+          init() {
+            // Initialize Google Maps Places Autocomplete
+            const addressInput = document.querySelector('[data-address-autocomplete]');
+            if (addressInput) {
+              const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+                types: ['address'],
+                componentRestrictions: { country: 'US' }
+              });
+
+              autocomplete.addListener('place_changed', () => {
+                const place = autocomplete.getPlace();
+                if (place.formatted_address) {
+                  this.formData.address = place.formatted_address;
+                }
+              });
+            }
+          },
+          isCurrentStepValid() {
+            switch (this.currentStep) {
+              case 1:
+                return this.formData.name && this.formData.email && this.formData.address;
+              case 2:
+                return this.formData.propertyType;
+              case 3:
+                return this.formData.damageType;
+              case 4:
+                return this.formData.timeline;
+              case 5:
+                return this.formData.phone;
+              default:
+                return false;
+            }
+          },
+          nextStep() {
+            if (this.isCurrentStepValid() && this.currentStep < this.totalSteps) {
+              this.currentStep++;
+            }
+          },
+          previousStep() {
+            if (this.currentStep > 1) {
+              this.currentStep--;
+            }
+          },
+          selectPropertyType(type) {
+            this.formData.propertyType = type;
+            this.nextStep();
+          },
+          selectDamageType(type) {
+            this.formData.damageType = type;
+            this.nextStep();
+          },
+          selectTimeline(timeline) {
+            this.formData.timeline = timeline;
+            this.nextStep();
+          },
+          submitForm() {
+            if (this.isCurrentStepValid()) {
+              window.location.href = '/thank-you';
+            }
+          }
+        }));
+      });
+
+      Alpine.start();
+    </script>
+  </head>
+  <body class="antialiased">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
